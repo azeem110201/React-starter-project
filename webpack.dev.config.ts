@@ -1,8 +1,11 @@
 import path from "path";
-import { Configuration as WebpackConfiguration, HotModuleReplacementPlugin } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import {
+  Configuration as WebpackConfiguration,
+  HotModuleReplacementPlugin,
+} from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 
 interface Configuration extends WebpackConfiguration {
@@ -32,11 +35,8 @@ const config: Configuration = {
         },
       },
       {
-        test: /\.(sass|less|css)$/,
-        use: {
-          loader: "css-loader",
-        }
-        
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpe?g|svg|gif)$/i,
@@ -57,7 +57,7 @@ const config: Configuration = {
       template: "src/index.html",
     }),
     new ForkTsCheckerWebpackPlugin({
-      async: false
+      async: false,
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
@@ -70,7 +70,7 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 3000,
     open: true,
-    hot: true
+    hot: true,
   },
 };
 

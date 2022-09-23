@@ -29,6 +29,19 @@ const config: Configuration = {
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|svg|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+        type: "javascript/auto",
+      },
     ],
   },
   resolve: {
