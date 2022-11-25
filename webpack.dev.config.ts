@@ -34,6 +34,15 @@ const config: Configuration = {
           },
         },
       },
+
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: "asset/inline",
+      },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],

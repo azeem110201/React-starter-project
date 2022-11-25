@@ -34,13 +34,12 @@ const config: Configuration = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|svg|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
-        type: "javascript/auto",
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: "asset/inline",
       },
     ],
   },
